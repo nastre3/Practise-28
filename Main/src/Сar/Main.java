@@ -1,9 +1,6 @@
 package Сar;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static final String TOYOTA = "Toyota";
@@ -30,5 +27,14 @@ public class Main {
         for (Car car : carSet) {
             System.out.println(car);
         }
+
+        Set<Double> set = new TreeSet<>();
+
+        set.add(21.5);
+        set.add(14.2);
+        set.add(8d); // 1
+        set.add(8.0);
+
+        System.out.println(set);
     }
 }
