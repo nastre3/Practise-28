@@ -24,17 +24,26 @@ public class Main {
         carList.add(car6);
 
         Set<Car> carSet = new HashSet<>(carList); // позволяет избежать дублей после добавления equals, hashcode методов
+        /*
         for (Car car : carSet) {
             System.out.println(car);
+        } */
+
+        // Пример HashMap
+        Map<Car, Integer> carMap = new HashMap<>();
+        for (Car car: carList) { // пробежали циклом по всему списку и положили в HashMap
+            if(carMap.containsKey(car)) { // если эл-т есть
+                int value = carMap.get(car); // достали значение по ключу
+                carMap.put(car, ++value); // переложили значение по ключу, повысив value
+            } else {
+                carMap.put(car, 1); // есть минимум одна такая уникальная машина
+            }
         }
 
-        Set<Double> set = new TreeSet<>();
-
-        set.add(21.5);
-        set.add(14.2);
-        set.add(8d); // 1
-        set.add(8.0);
-
-        System.out.println(set);
+        // Итерация по HashMap (кол-во одинаковых машин по совпадению 3 пар-ов)
+        for(Map.Entry<Car, Integer> carEntry:carMap.entrySet()) { // Car - ключ(key), Integer - значение(value)
+            // у carMap достали entrySet
+            System.out.println(carEntry.getKey() + "=" + carEntry.getValue());
+        }
     }
 }
