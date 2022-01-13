@@ -3,6 +3,8 @@ package Сar;
 import java.util.Objects;
 
 public class Car {
+
+
     private final String brand;
     private final String name;
     private  boolean onSale;

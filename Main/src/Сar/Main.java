@@ -45,5 +45,13 @@ public class Main {
             // у carMap достали entrySet
             System.out.println(carEntry.getKey() + "=" + carEntry.getValue());
         }
+
+        Set<Car> carSet2 = new TreeSet<>(new CarComparator().reversed()); // reversed - сортировка в обратном порядке
+        carSet.addAll(carList);
+        System.out.println();
+
+        for (Car car:carSet2) {
+            System.out.println(car.getName());
+        }
     }
 }
