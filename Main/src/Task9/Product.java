@@ -1,7 +1,10 @@
 package Task9;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Product implements Comparable<Product> {
 
@@ -64,5 +67,33 @@ public class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product o) {
         return brand.compareTo(o.brand);
+    }
+
+    public static class NameComparator implements Comparator<Product> {
+        @Override
+        public int compare(Product o1, Product o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
+    }
+
+    public class SerialNumberComparator implements Comparator<Product> {
+        @Override
+        public int compare(Product o1, Product o2) {
+            return Long.compare(o1.getSerialNumber(), o2.getSerialNumber());
+        }
+    }
+
+    public static void main(String[] args) {
+        Set<Product> products = new TreeSet<>(new NameComparator());
+        products.add(new Product("СуперБренд", "Колбаса", 1L, LocalDateTime.now()));
+        products.add(new Product("ЛучшийБренд", "Сыр", 2L, LocalDateTime.now()));
+
+        for (Product product : products) {
+            System.out.println(product.getName());
+        }
+
+        for (Product product : products) {
+            System.out.println(product.getSerialNumber());
+        }
     }
 }
